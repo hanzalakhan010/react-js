@@ -57,6 +57,8 @@ const TODO = () => {
                 (<div key={`${todo}-${index}`} onDoubleClick={() => deleteTodo(todo)}>
                     <span>{todo}</span>
                     <button onClick={() => editTodoHandler(todo)}>EDIT</button>
+                    <button onClick={() => editTodoHandler(todo)}>DONE</button>
+
                 </div >
                 )
                 )}
