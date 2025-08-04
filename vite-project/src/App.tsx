@@ -1,11 +1,11 @@
-import Posts from "./components/Posts";
+import Stepper from "./components/Stepper";
 
 
 const App = () => {
   return (
-    // <Stepper />
+    <Stepper/>
     // <Categories/>
-    <Posts/>
+    // <Posts/>
     // <Counter/>
   )
 
