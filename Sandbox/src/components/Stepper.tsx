@@ -16,8 +16,8 @@ const Stepper = () => {
                 </p>))
                 }
             </div>
-            <button onClick={onNext}>Next</button>
             <button onClick={onPrevious}>Previous</button>
+            <button onClick={onNext}>Next</button>
         </div >
     )
 }
