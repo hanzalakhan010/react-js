@@ -19,3 +19,4 @@ DID
     -- framework router
     -- TS satisfies
     -- gatsby
+    -- tailwind css
