@@ -1,10 +1,15 @@
 import { useEffect, useState, type ChangeEvent, type FormEvent } from 'react'
 import './index.css'
+interface Todo {
+    id: string,
+    text: string,
+    status: 'todo' | 'done',
+}
 const TODO = () => {
     const [todoInput, setTodoInput] = useState('')
-    const [todos, setTodos] = useState<string[]>([])
-    const [dones, setDones] = useState<string[]>([])
-    const [editTodo, setEditTodo] = useState<string | null>(null)
+    const [todos, setTodos] = useState<Todo[]>([])
+    // const [dones, setDones] = useState<string[]>([])
+    const [editTodo, setEditTodoId] = useState<string | null>(null)
     const [tab, setTab] = useState('todo')
     const handleTodoChange = (event: ChangeEvent<HTMLInputElement>) => {
         setTodoInput(event.target.value)
@@ -12,25 +17,27 @@ const TODO = () => {
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         if (todoInput.trim()) {
-            saveState([...todos, todoInput])
+            saveState([...todos,
+            { text: todoInput, id: crypto.randomUUID(), status: 'todo' }])
             setTodoInput('')
         }
     }
 
-    function deleteTodo(todo: string) {
-        const newTodos = todos.filter((t) => t !== todo)
+    function deleteTodo(id:string) {
+        const newTodos = todos.filter((t) => t.id !== id)
         // setTodos(newTodos)
-        console.log('newTodos', newTodos)
+        // console.log('newTodos', newTodos)
         saveState(newTodos)
     }
-    function saveState(todos: string[]) {
+    function saveState(todos: Todo[]) {
         localStorage.setItem('todos', JSON.stringify(todos))
         setTodos(todos)
     }
     function loadState() {
         setTodos(JSON.parse(localStorage.getItem('todos') ?? '[]') ?? [])
-    } function editTodoHandler(todo: string) {
-        setEditTodo(todo)
+    } function editTodoHandler(id: string) {
+        setEditTodoId(id)
+        const todo = todos.find((t) => t.id === id)?.text ?? ''
         setTodoInput(todo)
     }
     function handleEditSubmit(event: FormEvent<HTMLFormElement>) {
@@ -38,13 +45,13 @@ const TODO = () => {
         if (editTodo && todoInput.trim()) {
             const newTodos = todos.map((t) => (t === editTodo ? todoInput : t))
             saveState(newTodos)
-            setEditTodo(null)
+            setEditTodoId(null)
             setTodoInput('')
         }
     }
-    function handleDone(todo:string){
-        
-    }
+    // function handleDone(todo: string) {
+
+    // }
     useEffect(() => {
         loadState()
     }, [])
@@ -84,14 +91,14 @@ const TODO = () => {
                         <input id='todo' type="text" value={todoInput} onChange={handleTodoChange} />
                         <button type="submit">{editTodo ? 'Edit' : "Submit"}</button>
                     </form> */}
-                    {!dones.length && <p>No done todos</p>}
+                    {/* {!dones.length && <p>No done todos</p>} */}
                     <ul>
-                        {dones.map((done, index) =>
+                        {/* {dones.map((done, index) =>
                         (<div key={`${done}-${index}`}>
                             <span>{done}</span>
                         </div >
                         )
-                        )}
+                        )} */}
                     </ul>
                 </section>
             )}
