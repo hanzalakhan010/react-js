@@ -20,3 +20,6 @@ DID
     -- TS satisfies
     -- gatsby
     -- tailwind css
+
+    cloudinary
+    imagekit
