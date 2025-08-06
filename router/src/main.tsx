@@ -33,7 +33,7 @@ import { createRoutesFromElements } from 'react-router'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element = {<Layout/>}>
+    <Route path='' element = {<Layout/>}>
       <Route path='/' element={<HomePage />} />
       <Route path='/contact' element={<Contact />} />
       <Route path='/about' element={<About />} />

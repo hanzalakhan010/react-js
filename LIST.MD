@@ -1,7 +1,3 @@
-
-
-
-
 RENDERING HTML FROM JSX(SIMPLY COPYING RAW HTML IN RETURN STATEMENT)
 
 USESTATE
@@ -13,9 +9,13 @@ CONTROLLED INPUTS(MANAGED USING USESTATE)
 DID
     -- NEWSLETTER SUBSCRIPTION
     -- TODO CRUD
-
-
-
 CUSTOM HOOKS
 DID
     -- CREATED CUSTOM HOOK FOR STEPPER
+
+REACT ROUTER 
+DID
+    -- https://reactrouter.com/start/declarative/routing
+    -- framework router
+    -- TS satisfies
+    -- gatsby
