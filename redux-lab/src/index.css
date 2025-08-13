@@ -1,0 +1,108 @@
+/* src/index.css - vanilla CSS (no frameworks) */
+
+:root {
+  --bg: #f7f9fb;
+  --card: #ffffff;
+  --accent: #2563eb;
+  --muted: #6b7280;
+  --text: #0f172a;
+  --radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* App layout */
+.app {
+  max-width: 640px;
+  margin: 48px auto;
+  padding: 20px;
+}
+
+.app__header {
+  margin-bottom: 20px;
+}
+
+.app__title {
+  margin: 0 0 6px 0;
+  font-size: 1.5rem;
+}
+
+.app__subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Counter card */
+.counter {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 20px;
+  border: 1px solid #aaa;
+  display: grid;
+  gap: 12px;
+}
+
+.counter__title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.counter__display {
+  font-size: 2.4rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 18px;
+  border-radius: 8px;
+  background: linear-gradient(
+    180deg,
+    rgba(37, 99, 235, 0.06),
+    rgba(37, 99, 235, 0.02)
+  );
+  color: var(--accent);
+}
+
+/* Controls */
+.counter__controls {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 1.05rem;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.12);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--muted {
+  background: transparent;
+  color: var(--muted);
+  box-shadow: none;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
