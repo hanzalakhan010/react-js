@@ -1,27 +1,41 @@
+
+import { useDispatch } from "react-redux";
+import type { Todo } from "../features/todo/todoSlice";
+import { toggleTodo, removeTodo, handleEditTodo } from "../features/todo/todoSlice";
 interface Props {
-  text: string;
-  completed?: boolean;
+  todo: Todo
 }
 
-function TodoItem({ text, completed = false }: Props) {
+function TodoItem(todoProp: Props) {
+  const { todo } = todoProp
+  const dispatch = useDispatch()
+  function handleToggle() {
+    dispatch(toggleTodo(todo.id))
+  }
+  function handleRemove() {
+    dispatch(removeTodo(todo.id))
+  }
+  function handleEdit() {
+    dispatch(handleEditTodo(todo))
+  }
   return (
     <li className="todo-item">
       <input
         className="todo-item__checkbox"
         type="checkbox"
-        checked={completed}
+        checked={todo.completed}
         readOnly
+        onClick={handleToggle}
       />
       <span
-        className={`todo-item__text ${
-          completed ? "todo-item__text--done" : ""
-        }`}
+        className={`todo-item__text ${todo.completed ? "todo-item__text--done" : ""
+          }`}
       >
-        {text}
+        {todo.text}
       </span>
       <div className="todo-item__actions">
-        <button className="btn btn--small">Edit</button>
-        <button className="btn btn--small btn--muted">Delete</button>
+        <button className="btn btn--small" onClick={handleEdit}>Edit</button>
+        <button className="btn btn--small btn--muted" onClick={handleRemove}>Delete</button>
       </div>
     </li>
   );
